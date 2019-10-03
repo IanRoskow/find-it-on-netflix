@@ -1,9 +1,9 @@
 import React from 'react';
 import Netflix from '../api/Netflix';
-import { Button } from 'semantic-ui-react';
+import { Segment, Form, Dropdown, Button } from 'semantic-ui-react';
 
 class SearchBar extends React.Component {
-  state = { term: '', genre: '0', genres: [] };
+  state = { term: '', genre: [], genres: [] };
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -20,47 +20,88 @@ class SearchBar extends React.Component {
     this.setState({ genres: response.data.ITEMS });
   };
 
+  onAddItem = e => {
+    this.setState(state => {
+      console.log(e.target);
+      const list = state.genre.concat(e.target.value);
+
+      return {
+        list,
+        term: '',
+        genres: this.state.genres
+      };
+    });
+  };
+
   componentDidMount() {
     this.getGenres();
   }
 
   render() {
-    const genres = this.state.genres.map(genre => {
-      let key = Object.keys(genre);
-      if (genre[key].length === 1) {
-        return (
-          <option key={key} value={genre[key][0]}>
-            {key}
-          </option>
-        );
-      }
-      console.log(Object.keys(genre));
-      console.log(genre[Object.keys(genre)]);
-    });
+    const countryOptions = [
+      { key: 'af', value: 'af', text: 'Afghanistan' },
+      { key: 'ax', value: 'ax', text: 'Aland Islands' },
+      { key: 'al', value: 'al', text: 'Albania' },
+      { key: 'dz', value: 'dz', text: 'Algeria' },
+      { key: 'as', value: 'as', text: 'American Samoa' },
+      { key: 'ad', value: 'ad', text: 'Andorra' },
+      { key: 'ao', value: 'ao', text: 'Angola' },
+      { key: 'ai', value: 'ai', text: 'Anguilla' },
+      { key: 'ag', value: 'ag', text: 'Antigua' },
+      { key: 'ar', value: 'ar', text: 'Argentina' },
+      { key: 'am', value: 'am', text: 'Armenia' },
+      { key: 'aw', value: 'aw', text: 'Aruba' },
+      { key: 'au', value: 'au', text: 'Australia' },
+      { key: 'at', value: 'at', text: 'Austria' },
+      { key: 'az', value: 'az', text: 'Azerbaijan' },
+      { key: 'bs', value: 'bs', text: 'Bahamas' },
+      { key: 'bh', value: 'bh', text: 'Bahrain' },
+      { key: 'bd', value: 'bd', text: 'Bangladesh' },
+      { key: 'bb', value: 'bb', text: 'Barbados' },
+      { key: 'by', value: 'by', text: 'Belarus' },
+      { key: 'be', value: 'be', text: 'Belgium' },
+      { key: 'bz', value: 'bz', text: 'Belize' },
+      { key: 'bj', value: 'bj', text: 'Benin' }
+    ];
 
+    const genres = this.state.genres.map(genre => {
+      let key = `${Object.keys(genre)}`;
+      let value = `${genre[key][0]}`;
+      if (genre[key].length === 1) {
+        return { key, value, text: key };
+      } else {
+        //TO DO - add all the values in the proper query string
+        return { key, value, text: key };
+      }
+    });
+    //TODO for each in the drop down state we will create a custom row of movies with a header.
     return (
-      <div className='ui segment'>
-        <form onSubmit={this.onFormSubmit} className='ui form'>
-          <div className='field'>
-            <input
-              type='text'
-              value={this.state.term}
-              placeholder='Search for your favorite movie'
-              onChange={e => this.setState({ term: e.target.value })}
-            />
-          </div>
-          <select
-            name='genres'
+      <Segment>
+        <Form onSubmit={this.onFormSubmit}>
+          <Form.Input
+            type='text'
+            value={this.state.term}
+            placeholder='Search for your favorite movie'
+            onChange={e => this.setState({ term: e.target.value })}
+          />
+          <Dropdown
+            clearable
+            fluid
+            multiple
+            search
+            selection
+            options={genres}
+            placeholder='Select a genre'
             value={this.state.genre}
-            multiple=''
-            onChange={e => this.setState({ genre: e.target.value })}
-            className='ui fluid dropdown'
-          >
-            {genres}
-          </select>
+            onChange={e =>
+              this.setState({
+                genre: e.target.value
+              })
+            }
+          />
           <Button>Click Here</Button>
-        </form>
-      </div>
+        </Form>
+      </Segment>
     );
   }
 }

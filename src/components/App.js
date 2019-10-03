@@ -2,6 +2,7 @@ import React from 'react';
 import Netflix from '../api/Netflix';
 import SearchBar from '../components/search';
 import Results from './results';
+import { Container } from 'semantic-ui-react';
 
 class App extends React.Component {
   state = { movies: [], genres: [] };
@@ -27,10 +28,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <Container>
         <SearchBar genres={this.state.genres} onSubmit={this.getNetflix} />
         <Results movies={this.state.movies} />
-      </div>
+      </Container>
     );
   }
 }
