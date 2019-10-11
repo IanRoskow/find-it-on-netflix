@@ -1,13 +1,12 @@
 import React from 'react';
-import MovieCard from './movieCard';
+import { Image } from 'semantic-ui-react';
 
 const results = props => {
-  console.log(props);
-  const movies = props.movies.map(movie => {
-    return <MovieCard key={movie.title} image={movie.image} />;
+  const images = props.movies.map(movie => {
+    return <Image src={movie.image} rounded floated='left' />;
   });
 
-  return <div className='container'>{movies}</div>;
+  return <Image.Group size='small'>{images}</Image.Group>;
 };
 
 export default results;
