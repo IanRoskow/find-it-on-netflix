@@ -265,7 +265,7 @@ class App extends React.Component {
         download: '0'
       }
     ],
-    movie: '60029591'
+    movie: []
   };
 
   getNetflix = async (searchTerm, genre) => {
@@ -302,7 +302,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.getMovie('60029591');
+    this.getMovie('80075560');
   }
 
   render() {
