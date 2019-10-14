@@ -1,7 +1,7 @@
 import React from 'react';
 import { CarouselProvider, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Segment, Image } from 'semantic-ui-react';
+import { Segment, Image, Icon } from 'semantic-ui-react';
 
 import CustomCardSlide from './CustomCardSlide';
 import CustomDotGroup from './CustomDotGroup';
@@ -15,7 +15,13 @@ const results = props => {
         image={movie.image}
         index={0}
         header={movie.title}
-        meta={movie.type}
+        meta={
+          <Icon
+            link
+            onClick={() => props.movieDetails(movie.netflixid)}
+            name='angle down'
+          />
+        }
       />
     );
   });

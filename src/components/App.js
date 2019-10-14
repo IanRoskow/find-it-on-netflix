@@ -8,262 +8,262 @@ import MovieDetails from '../components/movie';
 class App extends React.Component {
   state = {
     movies: [
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      },
-      {
-        netflixid: '70079583',
-        title: 'The Dark Knight',
-        image:
-          'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
-        synopsis:
-          'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
-        rating: '9',
-        type: 'movie',
-        released: '2008',
-        runtime: '2h32m',
-        largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
-        unogsdate: '2015-04-14',
-        imdbid: 'tt0468569',
-        download: '0'
-      }
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // },
+      // {
+      //   netflixid: '70079583',
+      //   title: 'The Dark Knight',
+      //   image:
+      //     'https://occ-0-1490-1489.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABTVafl6uf8lmiDMxeNG_2b105SXjtW6--YEZIxVGW4lwazAggLWqDYnWy97SdN3jwK2EiP8fyYC41zIQXC9c7XRuuQ.jpg?r=541',
+      //   synopsis:
+      //     'As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.',
+      //   rating: '9',
+      //   type: 'movie',
+      //   released: '2008',
+      //   runtime: '2h32m',
+      //   largeimage: 'http://cdn1.nflximg.net/images/2133/8282133.jpg',
+      //   unogsdate: '2015-04-14',
+      //   imdbid: 'tt0468569',
+      //   download: '0'
+      // }
     ],
     movie: []
   };
@@ -302,7 +302,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.getMovie('80075560');
+    //this.getMovie('80075560');
   }
 
   render() {
@@ -310,7 +310,7 @@ class App extends React.Component {
       <Container>
         <SearchBar genres={this.state.genres} onSubmit={this.getNetflix} />
         <MovieDetails movie={this.state.movie} />
-        <Results movies={this.state.movies} />
+        <Results movies={this.state.movies} movieDetails={this.getMovie} />
       </Container>
     );
   }
