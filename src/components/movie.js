@@ -5,7 +5,6 @@ import {
   Item,
   Dimmer,
   Loader,
-  Label,
   Placeholder,
   Flag
 } from 'semantic-ui-react';
