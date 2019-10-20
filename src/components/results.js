@@ -46,8 +46,6 @@ const results = props => {
         style={{ width: '100%' }}
       >
         <Slider>{slides}</Slider>
-        <ButtonBack children={<div>Back</div>} />
-        <ButtonNext children={<div>Next</div>} />
         <CustomDotGroup slides={dotCount} />
       </CarouselProvider>
     </Segment>
