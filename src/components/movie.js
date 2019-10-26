@@ -11,11 +11,12 @@ import {
 
 const movie = props => {
   let details = (
-    <Placeholder style={{ height: 150, width: 150 }}>
-      <Dimmer active>
-        <Loader size='massive'>Loading</Loader>
-      </Dimmer>
-    </Placeholder>
+    <Item.Group>
+      <Item>
+        <Item.Image image />
+        <Item.Content></Item.Content>
+      </Item>
+    </Item.Group>
   );
 
   if (props.movie.nfinfo) {
@@ -41,7 +42,7 @@ const movie = props => {
     );
   }
 
-  return <Segment>{details}</Segment>;
+  return <div>{details}</div>;
 };
 
 export default movie;

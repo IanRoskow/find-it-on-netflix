@@ -3,7 +3,9 @@ import Netflix from '../api/Netflix';
 import SearchBar from '../components/search';
 import Results from './results';
 import { Container } from 'semantic-ui-react';
-import MovieDetails from '../components/movie';
+
+import Test from './test';
+import TestClass from './testClass';
 
 class App extends React.Component {
   state = {
@@ -265,7 +267,7 @@ class App extends React.Component {
       //   download: '0'
       // }
     ],
-    movie: []
+    dropDown: []
   };
 
   getNetflix = async (searchTerm, genre) => {
@@ -291,26 +293,37 @@ class App extends React.Component {
     this.setState({ movies: response.data.ITEMS });
   };
 
-  getMovie = async Id => {
+  getGenres = async () => {
     const response = await Netflix.get('', {
       params: {
-        t: 'loadvideo',
-        q: Id
+        t: 'genres'
       }
     });
-    this.setState({ movie: response.data.RESULT });
+
+    this.setState({ genres: response.data.ITEMS });
   };
 
-  componentDidMount() {
-    //this.getMovie('80075560');
+  async componentDidMount() {
+    await this.getGenres();
+
+    const genres = this.state.genres.reduce((result, genre) => {
+      let key = `${Object.keys(genre)}`;
+      let text = key.replace(/&amp;/g, '&');
+      let value = genre[key].join(';');
+      if (genre[key].length === 1) {
+        result.push({ key, value, text });
+      }
+      return result;
+    }, []);
+
+    this.setState({ dropDown: genres });
   }
 
   render() {
     return (
       <Container>
-        <SearchBar genres={this.state.genres} onSubmit={this.getNetflix} />
-        <MovieDetails movie={this.state.movie} />
-        <Results movies={this.state.movies} movieDetails={this.getMovie} />
+        <SearchBar genres={this.state.dropDown} onSubmit={this.getNetflix} />
+        <Results movies={this.state.movies} />
       </Container>
     );
   }

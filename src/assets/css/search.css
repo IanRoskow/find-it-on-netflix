@@ -1,0 +1,8 @@
+#searchGrid {
+  display: grid;
+  grid-template-columns: 5fr 5fr 2fr;
+  grid-template-rows: 38px;
+  grid-gap: 15px;
+  max-width: 800px;
+  margin: auto;
+}
