@@ -19,7 +19,7 @@ class SearchBar extends PureComponent {
         <div id='searchGrid'>
           <Form.Input
             type='text'
-            placeholder='Search for your favorite movie'
+            placeholder='Movie, Show, or Actor/Actress '
             value={this.state.term}
             onChange={e => this.setState({ term: e.target.value, genre: '' })}
           />
@@ -30,7 +30,7 @@ class SearchBar extends PureComponent {
             search
             selection
             options={this.props.genres}
-            placeholder='Select a genre'
+            placeholder='Crazy Sub-Genres'
             value={this.state.genre}
             onChange={(e, d) => {
               this.setState({ term: '', genre: d.value });

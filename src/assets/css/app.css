@@ -1,0 +1,8 @@
+body {
+  background-color: #141414;
+}
+
+#root {
+  overflow: hidden;
+  min-height: 600px;
+}

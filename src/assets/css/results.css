@@ -1,0 +1,122 @@
+.carousel {
+  position: relative;
+}
+
+.carousel__slider {
+  padding-top: 35px;
+}
+
+.carousel > button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 65px;
+  opacity: 0.3;
+  /* transition: transform 800ms; */
+}
+
+.carousel > button > img {
+  height: 150px;
+}
+
+.carousel .carousel__next-button {
+  right: -50px;
+  transition: right 600ms;
+}
+
+.carousel .carousel__back-button {
+  left: -50px;
+  transition: left 600ms;
+}
+
+/* .carousel button:hover{
+    transform: scale(1.2);
+} */
+
+.carousel .carousel__next-button:hover {
+  right: -55px;
+  opacity: 0.8;
+}
+
+.carousel .carousel__back-button:hover {
+  left: -55px;
+  opacity: 0.8;
+}
+
+.carousel .carousel__back-button img {
+  transform: rotate(180deg);
+}
+
+.expand {
+  width: 100%;
+  max-height: 35px;
+  border: none;
+  background-color: transparent;
+  transition: bottom 600ms;
+  cursor: pointer;
+  position: absolute;
+  bottom: 18px;
+  padding: 0px 10px;
+  right: 0;
+}
+
+.expand:hover {
+  bottom: 13px;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  margin-top: -40px;
+}
+.slide {
+  cursor: pointer;
+}
+
+.slide img {
+  pointer-events: none;
+  transition: width 500ms;
+}
+
+.is-open .slide img {
+  width: 200px;
+}
+.carousel__slide {
+  transition-duration: 500ms;
+}
+/* Middle slides */
+.open-now .carousel__slide {
+  transform: translate3d(-25px, 0, 0);
+}
+.open-now .carousel__slide.is-open {
+  transform: translate3d(-25px, -35px, 0);
+}
+.open-now .is-open ~ .carousel__slide {
+  transform: translate3d(25px, 0, 0);
+}
+/* First slide */
+.open-now .carousel__slide.is-open.first-slide {
+  transform: translate3d(0, -35px, 0);
+}
+.open-now .is-open.first-slide ~ .carousel__slide {
+  transform: translate3d(50px, 0, 0);
+}
+
+/* Last slide */
+.open-now.last__slide .carousel__slide {
+  transform: translate3d(-50px, 0, 0);
+}
+.open-now .carousel__slide.is-open.last-slide {
+  transform: translate3d(-50px, -35px, 0);
+}
+.open-now.last__slide .is-open.last-slide ~ .carousel__slide {
+  transform: translate3d(0px, 0, 0);
+}
+
+.slide:hover {
+}
+
+.slide:hover {
+}
+
+.slide:hover {
+}
