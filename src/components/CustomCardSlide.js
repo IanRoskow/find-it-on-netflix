@@ -3,6 +3,8 @@ import { Slide } from 'pure-react-carousel';
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 
+import '../assets/css/slide.css';
+
 const enterHover = e => {
   e.preventDefault();
   let li = e.target.closest('li');
@@ -36,7 +38,15 @@ const CustomCardSlide = ({
       className='slide'
       onMouseEnter={enterHover}
       onMouseLeave={leaveHover}
-      onClick={callBack}
+      onClick={event => {
+        if (document.querySelector('.selectedMovie')) {
+          document
+            .querySelector('.selectedMovie')
+            .classList.remove('selectedMovie');
+        }
+        event.target.closest('li').classList.add('selectedMovie');
+        callBack();
+      }}
       style={{ padding: '2px' }}
     >
       {/* <Card fluid {...cardProps} /> */}

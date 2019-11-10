@@ -10,8 +10,16 @@ import {
 } from 'semantic-ui-react';
 
 const movie = props => {
+  let slider = document.querySelector('.carousel');
   let details = (
-    <Item.Group>
+    <Item.Group
+      style={{
+        height: '245px',
+        position: 'relative',
+        top: '-70px',
+        'background-color': '#131313'
+      }}
+    >
       <Item>
         <Item.Image image />
         <Item.Content></Item.Content>
@@ -20,21 +28,34 @@ const movie = props => {
   );
 
   if (props.movie.nfinfo) {
-    console.log(props.movie.country);
+    slider.classList.add('details-open');
+    slider.classList.remove('details-closed');
     let flags = props.movie.country.map(flag => {
       return <Flag name={flag.ccode} title={flag.country} />;
     });
 
     details = (
-      <Item.Group>
+      <Item.Group
+        style={{
+          position: 'relative',
+          top: '-70px',
+          'background-color': '#131313'
+        }}
+      >
         <Item>
           <Item.Image src={props.movie.nfinfo.image1} />
           <Item.Content>
-            <Item.Header as='a'>{props.movie.nfinfo.title}</Item.Header>
+            <Item.Header style={{ color: 'white' }} as='a'>
+              {props.movie.nfinfo.title}
+            </Item.Header>
             <Item.Meta>
-              <span className='cinema'>{props.movie.imdbinfo.genre}</span>
+              <span style={{ color: 'white' }} className='cinema'>
+                {props.movie.imdbinfo.genre}
+              </span>
             </Item.Meta>
-            <Item.Description>{props.movie.nfinfo.synopsis}</Item.Description>
+            <Item.Description style={{ color: 'white' }}>
+              {props.movie.nfinfo.synopsis}
+            </Item.Description>
             <Item.Extra>{flags}</Item.Extra>
           </Item.Content>
         </Item>

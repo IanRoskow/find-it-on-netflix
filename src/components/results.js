@@ -34,7 +34,7 @@ class results extends React.Component {
     let visibleSlides = 7;
 
     if (this.state.movie === 'loading') {
-      movieDetails = 'loading';
+      movieDetails = <MovieDetails movie='Loading' />;
     } else if (this.state.movie) {
       movieDetails = <MovieDetails movie={this.state.movie} />;
     }
@@ -60,18 +60,19 @@ class results extends React.Component {
             </div>
           }
           callBack={() => this.getMovie(movie.netflixid)}
-          meta={
-            <button
-              className='expand'
-              onClick={() => this.getMovie(movie.netflixid)}
-            >
-              <img
-                className='rotate'
-                src={require('../assets/images/Arrow.svg')}
-                alt='v'
-              />
-            </button>
-          }
+          //Just using on click of the movie poster
+          // meta={
+          //   <button
+          //     className='expand'
+          //     onClick={() => this.getMovie(movie.netflixid)}
+          //   >
+          //     <img
+          //       className='rotate'
+          //       src={require('../assets/images/Arrow.svg')}
+          //       alt='v'
+          //     />
+          //   </button>
+          // }
         />
       );
     });
@@ -118,12 +119,13 @@ class results extends React.Component {
           visibleSlides={visibleSlides}
           step={visibleSlides}
           style={{ width: '100%' }}
+          className='details-closed'
         >
           {buttons}
           <Slider>{slides}</Slider>
           <CustomDotGroup slides={dotCount} count={visibleSlides} />
+          {movieDetails}
         </CarouselProvider>
-        {movieDetails}
       </React.Fragment>
     );
   }
