@@ -3,6 +3,7 @@ import Netflix from '../api/Netflix';
 import SearchBar from '../components/search';
 import Results from './results';
 import { Container, Header, Icon } from 'semantic-ui-react';
+import he from 'he';
 
 import '../assets/css/app.css';
 
@@ -50,7 +51,7 @@ class App extends React.Component {
 
     const genres = this.state.genres.reduce((result, genre) => {
       let key = `${Object.keys(genre)}`;
-      let text = key.replace(/&amp;/g, '&');
+      let text = he.decode(key);
       let value = genre[key].join(';');
       if (genre[key].length === 1) {
         result.push({ key, value, text });

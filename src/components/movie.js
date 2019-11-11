@@ -1,5 +1,6 @@
 import React from 'react';
 import Netflix from '../api/Netflix';
+import he from 'he';
 import {
   Segment,
   Item,
@@ -9,6 +10,8 @@ import {
   Flag
 } from 'semantic-ui-react';
 
+import '../assets/css/movie.css';
+
 const movie = props => {
   let slider = document.querySelector('.carousel');
   let details = (
@@ -17,12 +20,12 @@ const movie = props => {
         height: '245px',
         position: 'relative',
         top: '-70px',
-        'background-color': '#131313'
+        backgroundColor: '#131313'
       }}
     >
       <Item>
         <Item.Image image />
-        <Item.Content></Item.Content>
+        <Item.Content>props.movie</Item.Content>
       </Item>
     </Item.Group>
   );
@@ -54,7 +57,7 @@ const movie = props => {
               </span>
             </Item.Meta>
             <Item.Description style={{ color: 'white' }}>
-              {props.movie.nfinfo.synopsis}
+              {he.decode(props.movie.nfinfo.synopsis)}
             </Item.Description>
             <Item.Extra>{flags}</Item.Extra>
           </Item.Content>

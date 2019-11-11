@@ -1,0 +1,18 @@
+i.flag::after {
+  content: ' ' attr(title);
+  text-indent: -100px;
+  letter-spacing: -10px;
+  opacity: 0;
+  transition: letter-spacing 0.3s ease-out, opacity 0.3s ease-out;
+  color: white;
+}
+
+i.flag:hover::after {
+  text-indent: 0px;
+  letter-spacing: normal;
+  opacity: 1;
+}
+
+i.flag:not(.icon) {
+  width: auto;
+}
