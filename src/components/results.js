@@ -45,6 +45,58 @@ class results extends React.Component {
     this.setState({ movie: response.data.RESULT, loading: false });
   };
 
+  lazyLoad() {
+    let slider = document.querySelector('.carousel__slider-tray-wrapper');
+    let components = document.querySelectorAll(
+      '.carousel__slider-tray-wrapper li'
+    );
+    let width = slider.clientWidth;
+    let style = window.getComputedStyle(slider.querySelector('ul'));
+    // eslint-disable-next-line no-undef
+    let matrix = new WebKitCSSMatrix(style.webkitTransform);
+    let locationH = matrix.m41 * -1;
+    console.log(locationH);
+    console.log(width);
+    console.log(components);
+    console.log(locationH + width * 4);
+    components.forEach(el => {
+      console.log(el);
+      console.log(el.offsetLeft);
+      if (el.offsetLeft < locationH + width * 4) {
+        let image = el.querySelector('img');
+        if (!image.src) {
+          image.src = image.getAttribute('data-src');
+        }
+      }
+    });
+  }
+
+  componentDidUpdate() {
+    // let slider = document.querySelector('.carousel__slider-tray-wrapper');
+    // let components = document.querySelectorAll(
+    //   '.carousel__slider-tray-wrapper li'
+    // );
+    // let width = slider.clientWidth;
+    // let style = window.getComputedStyle(slider);
+    // // eslint-disable-next-line no-undef
+    // let matrix = new WebKitCSSMatrix(style.webkitTransform);
+    // let location = matrix.m41 * -1;
+    // console.log(location);
+    // console.log(width);
+    // console.log(components);
+    // console.log(location + width * 2);
+    // components.forEach(el => {
+    //   console.log(el);
+    //   console.log(el.offsetLeft);
+    //   if (el.offsetLeft < location + width * 2) {
+    //     let image = el.querySelector('img');
+    //     if (!image.src) {
+    //       image.src = image.getAttribute('data-src');
+    //     }
+    //   }
+    // });
+  }
+
   render() {
     //Set the mount of visible slides, this will change as the viewport changes.
     let visibleSlides = 7;
@@ -54,21 +106,25 @@ class results extends React.Component {
     const slides = this.props.movies.map(movie => {
       count++;
       let image = movie.largeimage.length ? movie.largeimage : movie.image;
+      let imageAttribute = count < visibleSlides * 3 ? 'src' : 'data-src';
+      let variableAttribute = { [imageAttribute]: image };
+      console.log(variableAttribute);
       //may need to refactor for mobile, when slide count is one
       let first = count % visibleSlides === 1 ? 'first-slide' : '';
       let last = count % visibleSlides === 0 ? 'last-slide' : '';
       return (
         <CustomCardSlide
           image={
-            <img src={image} width='150px' className='ui small' alt='Error' />
+            <img
+              {...variableAttribute}
+              hasMasterSpinner='true'
+              className='ui small'
+              width='150px'
+              alt='Error'
+            />
           }
           index={count}
           classToAdd={first + last}
-          header={
-            <div style={{ textAlign: 'center', color: 'white' }}>
-              {movie.title}
-            </div>
-          }
           callBack={() => this.getMovie(movie.netflixid)}
         />
       );
@@ -80,7 +136,7 @@ class results extends React.Component {
       count++;
       slides.push(
         <CustomCardSlide
-          image={''}
+          image={<img data-src='' className='ui small' width='150px' alt='' />}
           index={count}
           classToAdd={''}
           callBack={() => {}}
@@ -91,7 +147,11 @@ class results extends React.Component {
     //Create the dot navigation for the carousel
     let dotCount = Math.round(count / visibleSlides);
     let dotNavigation = (
-      <CustomDotGroup slides={dotCount} count={visibleSlides} />
+      <CustomDotGroup
+        slides={dotCount}
+        count={visibleSlides}
+        callBack={this.lazyLoad}
+      />
     );
 
     //Create the left and right buttons for the carousel
@@ -104,6 +164,7 @@ class results extends React.Component {
             }
           />
           <ButtonNext
+            onClick={this.lazyLoad}
             children={
               <img src={require('../assets/images/Arrow.svg')} alt='>' />
             }
@@ -130,13 +191,15 @@ class results extends React.Component {
           step={visibleSlides}
           style={{ width: '100%' }}
           className='details-closed'
+          infinite='true'
         >
           {buttons}
           <Slider>{slides}</Slider>
-          {dotNavigation}
+          {/* The buttons need to be disabled until I can think of a fix for the lazy load */}
+          {/* {dotNavigation} */}
           <div
             className='transitionMovie'
-            style={{ position: 'relative', top: '-70px', ...openLoader }}
+            style={{ position: 'relative', top: '-50px', ...openLoader }}
           >
             <Transition
               visible={this.state.loading}

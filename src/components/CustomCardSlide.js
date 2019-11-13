@@ -13,7 +13,6 @@ const enterHover = e => {
   if (li.classList.contains('last-slide')) slider.classList.add('last__slide');
 
   slider.classList.add('open-now');
-  console.log(e.target);
 };
 
 const leaveHover = e => {
@@ -22,17 +21,9 @@ const leaveHover = e => {
   e.target.closest('li').classList.remove('is-open');
   slider.classList.remove('open-now');
   slider.classList.remove('last__slide');
-  console.log(e.target);
 };
 
-const CustomCardSlide = ({
-  index,
-  image,
-  classToAdd,
-  callBack,
-  header,
-  meta
-}) => (
+const CustomCardSlide = ({ index, image, classToAdd, callBack }) => (
   <Slide index={index} className={classToAdd}>
     <div
       className='slide'
@@ -49,10 +40,7 @@ const CustomCardSlide = ({
       }}
       style={{ padding: '2px' }}
     >
-      {/* <Card fluid {...cardProps} /> */}
       {image}
-      {/* {header}
-      {meta} */}
     </div>
   </Slide>
 );
