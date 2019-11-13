@@ -33,7 +33,8 @@ const flagContainer = {
   position: 'absolute',
   width: '100%',
   bottom: '0px',
-  color: 'white'
+  color: 'white',
+  boxSizing: 'content-box'
 };
 
 const flagStyles = {
@@ -53,16 +54,14 @@ const movie = props => {
     <Item.Group
       style={{
         height: '245px',
-        position: 'relative',
-        top: '-70px',
         backgroundColor: '#131313',
         transitionDuration: '500ms'
       }}
     >
       <Item>
-        <Dimmer active>
+        {/* <Dimmer active>
           <Loader size='big'>Loading</Loader>
-        </Dimmer>
+        </Dimmer> */}
       </Item>
     </Item.Group>
   );
@@ -96,20 +95,20 @@ const movie = props => {
         <Item.Group
           style={{
             position: 'relative',
-            top: '-70px',
-            'background-color': '#131313'
+            'background-color': 'rgb(20,20,20)'
           }}
         >
           <Item>
             <Item.Image
-              style={{ width: '200px' }}
+              style={{ width: '200px', minHeight: '280px' }}
               src={props.movie.nfinfo.image1}
             />
             <Item.Content
               style={{
                 position: 'relative',
-                padding: '20px',
-                marginLeft: '10px'
+                padding: '20px 0px',
+                margin: '0px 20px',
+                transition: 'opacity 250ms'
               }}
             >
               <Item.Header style={{ color: 'white', fontSize: '1.6em' }}>
@@ -141,7 +140,7 @@ const movie = props => {
             </Item.Content>
           </Item>
         </Item.Group>
-        <Divider style={{ position: 'relative', top: '-70px' }} />
+        <Divider />
       </React.Fragment>
     );
   }

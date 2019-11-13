@@ -7,7 +7,9 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
-  Divider,
+  Transition,
+  Dimmer,
+  Loader,
   Segment,
   Header,
   Icon,
@@ -21,13 +23,16 @@ import CustomCardSlide from './CustomCardSlide';
 import CustomDotGroup from './CustomDotGroup';
 
 import '../assets/css/results.css';
+let visible = false;
+let openLoader = { minHeight: '0px' };
 
 class results extends React.Component {
-  state = { movie: '' };
+  state = { movie: '', loading: false };
 
   //Load individual movie data on callback of selected title
   getMovie = async Id => {
-    this.setState({ movie: 'loading' });
+    openLoader = { height: '281px' };
+    this.setState({ loading: true, movie: '' });
     let slider = document.querySelector('.carousel');
     slider.classList.add('details-open');
     slider.classList.remove('details-closed');
@@ -37,7 +42,7 @@ class results extends React.Component {
         q: Id
       }
     });
-    this.setState({ movie: response.data.RESULT });
+    this.setState({ movie: response.data.RESULT, loading: false });
   };
 
   render() {
@@ -113,7 +118,7 @@ class results extends React.Component {
     } else if (this.state.movie) {
       movieDetails = <MovieDetails movie={this.state.movie} />;
     }
-
+    let isActive = this.state.loading ? 'active' : '';
     //Return the results carousel with the movie titles
     return (
       <React.Fragment>
@@ -129,7 +134,24 @@ class results extends React.Component {
           {buttons}
           <Slider>{slides}</Slider>
           {dotNavigation}
-          <div className='transitionMovie'>{movieDetails}</div>
+          <div
+            className='transitionMovie'
+            style={{ position: 'relative', top: '-70px', ...openLoader }}
+          >
+            <Transition
+              visible={this.state.loading}
+              animation='fade'
+              duration={250}
+            >
+              <Dimmer
+                active={isActive}
+                style={{ backgroundColor: 'rgb(20, 20, 20)' }}
+              >
+                <Loader size='big'>Loading</Loader>
+              </Dimmer>
+            </Transition>
+            {movieDetails}
+          </div>
         </CarouselProvider>
       </React.Fragment>
     );
