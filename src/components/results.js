@@ -6,7 +6,14 @@ import {
   ButtonNext
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Segment, Header, Icon, Item, Button } from 'semantic-ui-react';
+import {
+  Divider,
+  Segment,
+  Header,
+  Icon,
+  Item,
+  Button
+} from 'semantic-ui-react';
 
 import Netflix from '../api/Netflix';
 import MovieDetails from '../components/movie';
@@ -18,8 +25,12 @@ import '../assets/css/results.css';
 class results extends React.Component {
   state = { movie: '' };
 
+  //Load individual movie data on callback of selected title
   getMovie = async Id => {
     this.setState({ movie: 'loading' });
+    let slider = document.querySelector('.carousel');
+    slider.classList.add('details-open');
+    slider.classList.remove('details-closed');
     const response = await Netflix.get('', {
       params: {
         t: 'loadvideo',
@@ -30,18 +41,12 @@ class results extends React.Component {
   };
 
   render() {
-    let movieDetails = null;
+    //Set the mount of visible slides, this will change as the viewport changes.
     let visibleSlides = 7;
 
-    if (this.state.movie === 'loading') {
-      movieDetails = <MovieDetails movie='Loading' />;
-    } else if (this.state.movie) {
-      movieDetails = <MovieDetails movie={this.state.movie} />;
-    }
-    console.log('Movies' + this.props.movies);
+    //Map the movie titles to an array of card slides
     let count = 0;
     const slides = this.props.movies.map(movie => {
-      console.log('entered');
       count++;
       let image = movie.largeimage.length ? movie.largeimage : movie.image;
       //may need to refactor for mobile, when slide count is one
@@ -60,24 +65,11 @@ class results extends React.Component {
             </div>
           }
           callBack={() => this.getMovie(movie.netflixid)}
-          //Just using on click of the movie poster
-          // meta={
-          //   <button
-          //     className='expand'
-          //     onClick={() => this.getMovie(movie.netflixid)}
-          //   >
-          //     <img
-          //       className='rotate'
-          //       src={require('../assets/images/Arrow.svg')}
-          //       alt='v'
-          //     />
-          //   </button>
-          // }
         />
       );
     });
-    console.log(slides);
-    console.log(`Count: ${count} visible: ${visibleSlides}`);
+
+    //Add extra blank slides to ensure it first and last slides in the carousel stay consistent
     let extraSlides = count ? visibleSlides - (count % visibleSlides) : 0;
     for (let i = 1; i <= extraSlides; i++) {
       count++;
@@ -90,10 +82,14 @@ class results extends React.Component {
         />
       );
     }
-    console.log(slides);
-    let dotCount = Math.round(count / visibleSlides);
-    console.log(`Dot: ${dotCount} Count: ${count} visible: ${visibleSlides}`);
 
+    //Create the dot navigation for the carousel
+    let dotCount = Math.round(count / visibleSlides);
+    let dotNavigation = (
+      <CustomDotGroup slides={dotCount} count={visibleSlides} />
+    );
+
+    //Create the left and right buttons for the carousel
     let buttons =
       count === 0 ? null : (
         <React.Fragment>
@@ -110,6 +106,15 @@ class results extends React.Component {
         </React.Fragment>
       );
 
+    //Conditional render of the movie details depending on if the title was selected.
+    let movieDetails = null;
+    if (this.state.movie === 'loading') {
+      movieDetails = <MovieDetails movie='Loading' />;
+    } else if (this.state.movie) {
+      movieDetails = <MovieDetails movie={this.state.movie} />;
+    }
+
+    //Return the results carousel with the movie titles
     return (
       <React.Fragment>
         <CarouselProvider
@@ -123,8 +128,8 @@ class results extends React.Component {
         >
           {buttons}
           <Slider>{slides}</Slider>
-          <CustomDotGroup slides={dotCount} count={visibleSlides} />
-          {movieDetails}
+          {dotNavigation}
+          <div className='transitionMovie'>{movieDetails}</div>
         </CarouselProvider>
       </React.Fragment>
     );

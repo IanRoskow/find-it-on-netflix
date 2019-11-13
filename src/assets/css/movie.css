@@ -1,4 +1,4 @@
-i.flag::after {
+/* i.flag::after {
   content: ' ' attr(title);
   text-indent: -100px;
   letter-spacing: -10px;
@@ -11,6 +11,13 @@ i.flag:hover::after {
   text-indent: 0px;
   letter-spacing: normal;
   opacity: 1;
+} */
+
+.flag::after {
+  content: attr(title);
+  padding-left: 5px;
+  color: white;
+  line-height: 20px;
 }
 
 i.flag:not(.icon) {

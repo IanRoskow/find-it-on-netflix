@@ -115,3 +115,8 @@
 .details-open .open-now .carousel_slide {
   cursor: pointer;
 }
+
+.transitionMovie {
+  height: 0;
+  transition: height 500ms;
+}

@@ -18,12 +18,14 @@ class SearchBar extends PureComponent {
       <Form onSubmit={this.onFormSubmit}>
         <div id='searchGrid'>
           <Form.Input
+            inverted
             type='text'
             placeholder='Movie, Show, or Actor/Actress '
             value={this.state.term}
             onChange={e => this.setState({ term: e.target.value, genre: '' })}
           />
           <Dropdown
+            inverted
             lazyLoad
             clearable
             fluid
