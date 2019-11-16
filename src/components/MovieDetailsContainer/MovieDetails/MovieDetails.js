@@ -1,17 +1,8 @@
 import React from 'react';
-import Netflix from '../api/Netflix';
 import he from 'he';
-import {
-  Header,
-  Dimmer,
-  Divider,
-  Loader,
-  Icon,
-  Item,
-  Flag
-} from 'semantic-ui-react';
+import { Header, Divider, Icon, Item, Flag } from 'semantic-ui-react';
 
-import '../assets/css/movie.css';
+import './MovieDetails.css';
 
 const MovieMeta = props => {
   return (
@@ -49,7 +40,7 @@ const flagStyles = {
   height: '70px'
 };
 
-const movie = props => {
+const MovieDetails = props => {
   let details = (
     <Item.Group
       style={{
@@ -58,35 +49,31 @@ const movie = props => {
         transitionDuration: '500ms'
       }}
     >
-      <Item>
-        {/* <Dimmer active>
-          <Loader size='big'>Loading</Loader>
-        </Dimmer> */}
-      </Item>
+      <Item></Item>
     </Item.Group>
   );
-
-  if (props.movie.nfinfo) {
+  console.log(props);
+  if (props.movieDetails) {
     let Sidebar = (
       <div>
         <MovieMeta
           icon={<Icon inverted fitted color='yellow' name='imdb' />}
-          data={props.movie.imdbinfo.rating}
+          data={props.movieDetails.imdbinfo.rating}
         />
         <MovieMeta
           icon={<Icon inverted fitted color='black' name='time' />}
-          data={props.movie.imdbinfo.runtime}
+          data={props.movieDetails.imdbinfo.runtime}
         />
-        <MovieMeta icon='' data={props.movie.nfinfo.released} />
-        <MovieMeta icon='' data={props.movie.imdbinfo.genre} />
+        <MovieMeta icon='' data={props.movieDetails.nfinfo.released} />
+        <MovieMeta icon='' data={props.movieDetails.imdbinfo.genre} />
         <MovieMeta
           icon={<Icon inverted fitted color='blue' name='trophy' />}
-          data={props.movie.imdbinfo.awards}
+          data={props.movieDetails.imdbinfo.awards}
         />
       </div>
     );
 
-    let flags = props.movie.country.map(flag => {
+    let flags = props.movieDetails.country.map(flag => {
       return <Flag name={flag.ccode} title={flag.country} />;
     });
 
@@ -101,7 +88,7 @@ const movie = props => {
           <Item>
             <Item.Image
               style={{ width: '200px', minHeight: '280px' }}
-              src={props.movie.nfinfo.image1}
+              src={props.movieDetails.nfinfo.image1}
             />
             <Item.Content
               style={{
@@ -112,9 +99,17 @@ const movie = props => {
               }}
             >
               <Item.Header style={{ color: 'white', fontSize: '1.6em' }}>
-                {he.decode(props.movie.nfinfo.title)}
+                {he.decode(props.movieDetails.nfinfo.title)}
               </Item.Header>
-              <Icon style={{position:"absolute", top: "15px", right: "15px"}}inverted color='grey' name='x' size='large' link onClick={props.callBack} />
+              <Icon
+                style={{ position: 'absolute', top: '15px', right: '15px' }}
+                inverted
+                color='grey'
+                name='x'
+                size='large'
+                link
+                onClick={props.closeMovie}
+              />
               <Item.Meta style={{ overflow: 'hidden', marginTop: '0px' }}>
                 {Sidebar}
               </Item.Meta>
@@ -125,7 +120,7 @@ const movie = props => {
                   marginTop: '15px'
                 }}
               >
-                {he.decode(props.movie.nfinfo.synopsis)}
+                {he.decode(props.movieDetails.nfinfo.synopsis)}
               </Item.Description>
               <div style={flagContainer}>
                 <Header
@@ -149,4 +144,4 @@ const movie = props => {
   return details;
 };
 
-export default movie;
+export default MovieDetails;

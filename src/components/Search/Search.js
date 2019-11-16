@@ -1,8 +1,14 @@
 import React, { PureComponent } from 'react';
-import Netflix from '../api/Netflix';
 import { Form, Dropdown, Button } from 'semantic-ui-react';
 
-import '../assets/css/search.css';
+const gridStyles = {
+  display: 'grid',
+  gridTemplateColumns: '5fr 5fr 2fr',
+  gridTemplateRows: '38px',
+  gridGap: '15px',
+  maxWidth: '800px',
+  margin: 'auto'
+};
 
 class SearchBar extends PureComponent {
   state = { term: '', genre: '' };
@@ -16,7 +22,7 @@ class SearchBar extends PureComponent {
     //TODO for each in the drop down state we will create a custom row of movies with a header.
     return (
       <Form onSubmit={this.onFormSubmit}>
-        <div id='searchGrid'>
+        <div style={gridStyles}>
           <Form.Input
             inverted
             type='text'

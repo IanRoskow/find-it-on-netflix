@@ -1,41 +1,19 @@
 import React from 'react';
-import Netflix from '../api/Netflix';
-import SearchBar from '../components/search';
-import Results from './results';
+import Netflix from '../../api/Netflix';
+import SearchBar from '../Search/Search';
+import CarouselContainer from '../CarouselContainer/CarouselContainer';
 import { Container, Header, Icon } from 'semantic-ui-react';
 import he from 'he';
 
-import '../assets/css/app.css';
+import './App.css';
 
 class App extends React.Component {
   state = {
-    movies: [],
-    dropDown: []
+    searchTerm: '',
+    genre: ''
   };
 
-  getNetflix = async (searchTerm, genre) => {
-    this.setState({ movies: [] });
-    const currentYear = new Date().getFullYear();
-    let sort = 'Rating';
-    if (!genre.length) {
-      genre = '0';
-      sort = 'Relevance';
-    }
-
-    const response = await Netflix.get('', {
-      params: {
-        q: `${searchTerm}-!1900,${currentYear}-!0,5-!0,10-!${genre}-!Any-!Any-!Any-!gt0-!{downloadable}`,
-        t: 'ns',
-        cl: 'all',
-        st: 'adv',
-        ob: sort,
-        p: '1',
-        sa: 'or'
-      }
-    });
-
-    this.setState({ movies: response.data.ITEMS });
-  };
+  setTerms = (searchTerm, genre) => {};
 
   getGenres = async () => {
     const response = await Netflix.get('', {
@@ -69,8 +47,14 @@ class App extends React.Component {
         <Header as='h1' color='red' textAlign='center' style={{ margin: 60 }}>
           Where is it streaming?
         </Header>
-        <SearchBar genres={this.state.dropDown} onSubmit={this.getNetflix} />
-        <Results movies={this.state.movies} />
+        <SearchBar
+          genres={this.state.dropDown}
+          onSubmit={(searchTerm, genre) => this.setState({ searchTerm, genre })}
+        />
+        <CarouselContainer
+          searchTerm={this.state.searchTerm}
+          genre={this.state.genre}
+        />
       </Container>
     );
   }

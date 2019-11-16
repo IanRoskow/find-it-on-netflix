@@ -3,7 +3,7 @@ import { Slide } from 'pure-react-carousel';
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 
-import '../assets/css/slide.css';
+import './CarouselSlide.css';
 
 const enterHover = e => {
   e.preventDefault();
@@ -31,9 +31,7 @@ const CustomCardSlide = ({ index, image, classToAdd, callBack }) => (
       onMouseLeave={leaveHover}
       onClick={event => {
         if (document.querySelector('li[selected]')) {
-          document
-            .querySelector('li[selected]')
-            .removeAttribute('selected');
+          document.querySelector('li[selected]').removeAttribute('selected');
         }
         event.target.closest('li').setAttribute('selected', 'true');
         callBack();
