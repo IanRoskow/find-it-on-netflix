@@ -14,6 +14,7 @@ class App extends React.Component {
   };
 
   getNetflix = async (searchTerm, genre) => {
+    this.setState({ movies: [] });
     const currentYear = new Date().getFullYear();
     let sort = 'Rating';
     if (!genre.length) {

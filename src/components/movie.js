@@ -112,8 +112,9 @@ const movie = props => {
               }}
             >
               <Item.Header style={{ color: 'white', fontSize: '1.6em' }}>
-                {props.movie.nfinfo.title}
+                {he.decode(props.movie.nfinfo.title)}
               </Item.Header>
+              <Icon style={{position:"absolute", top: "15px", right: "15px"}}inverted color='grey' name='x' size='large' link onClick={props.callBack} />
               <Item.Meta style={{ overflow: 'hidden', marginTop: '0px' }}>
                 {Sidebar}
               </Item.Meta>

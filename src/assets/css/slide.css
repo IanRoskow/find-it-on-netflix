@@ -1,11 +1,11 @@
-.selectedMovie img {
+li[selected] img {
   box-sizing: content-box;
   border: 4px solid white;
   margin-left: -4px;
   margin-top: -4px;
 }
 
-.selectedMovie .slide::after {
+li[selected] .slide::after {
   content: '';
   position: relative;
   left: 60px;

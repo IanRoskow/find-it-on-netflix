@@ -30,12 +30,12 @@ const CustomCardSlide = ({ index, image, classToAdd, callBack }) => (
       onMouseEnter={enterHover}
       onMouseLeave={leaveHover}
       onClick={event => {
-        if (document.querySelector('.selectedMovie')) {
+        if (document.querySelector('li[selected]')) {
           document
-            .querySelector('.selectedMovie')
-            .classList.remove('selectedMovie');
+            .querySelector('li[selected]')
+            .removeAttribute('selected');
         }
-        event.target.closest('li').classList.add('selectedMovie');
+        event.target.closest('li').setAttribute('selected', 'true');
         callBack();
       }}
       style={{ padding: '2px' }}

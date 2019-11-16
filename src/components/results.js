@@ -45,7 +45,8 @@ class results extends React.Component {
     this.setState({ movie: response.data.RESULT, loading: false });
   };
 
-  lazyLoad() {
+  lazyLoad = () => {
+    // if(document.querySelector('.details-open')) this.closeMovie();
     let slider = document.querySelector('.carousel__slider-tray-wrapper');
     let components = document.querySelectorAll(
       '.carousel__slider-tray-wrapper li'
@@ -69,6 +70,16 @@ class results extends React.Component {
         }
       }
     });
+  }
+
+  closeMovie = () => {
+    let slider = document.querySelector('.carousel');
+    document
+            .querySelector('li[selected]')
+            .removeAttribute('selected');
+    slider.classList.add('details-closed');
+    slider.classList.remove('details-open');
+    this.setState({ movie: '' });
   }
 
   componentDidUpdate() {
@@ -177,7 +188,9 @@ class results extends React.Component {
     if (this.state.movie === 'loading') {
       movieDetails = <MovieDetails movie='Loading' />;
     } else if (this.state.movie) {
-      movieDetails = <MovieDetails movie={this.state.movie} />;
+      movieDetails = (
+        <MovieDetails movie={this.state.movie} callBack={this.closeMovie} />
+      );
     }
     let isActive = this.state.loading ? 'active' : '';
     //Return the results carousel with the movie titles
