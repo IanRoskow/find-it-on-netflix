@@ -31,11 +31,12 @@ export default class MovieDetailsContainer extends Component {
   };
 
   render() {
-    return (
+    let movieDetails = this.state.movieDetails ? (
       <MovieDetails
         closeMovie={this.closeMovie}
         movieDetails={this.state.movieDetails}
       />
-    );
+    ) : null; //todo <LoaderMovie /> instead of null
+    return <React.Fragment>{movieDetails}</React.Fragment>;
   }
 }

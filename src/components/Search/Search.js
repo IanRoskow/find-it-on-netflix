@@ -31,14 +31,13 @@ class SearchBar extends PureComponent {
             onChange={e => this.setState({ term: e.target.value, genre: '' })}
           />
           <Dropdown
-            inverted
-            lazyLoad
-            clearable
+            placeholder='Crazy Sub-Genres'
             fluid
-            search
             selection
             options={this.props.genres}
-            placeholder='Crazy Sub-Genres'
+            lazyLoad
+            clearable
+            search
             value={this.state.genre}
             onChange={(e, d) => {
               this.setState({ term: '', genre: d.value });

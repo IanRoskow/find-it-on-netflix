@@ -41,16 +41,24 @@ export default class CarouselContainer extends Component {
   }
 
   render() {
+    //Need to create loading carousel component
+    let carousel = this.state.movieList ? (
+      <Carousel
+        movieList={this.state.movieList}
+        selectMovie={ID => this.setMovieID(ID)}
+      />
+    ) : null; //todo <LoadingCarousel/> instead of null
+
+    let movieDetails = this.state.movieID ? (
+      <MovieDetailContainer
+        movieID={this.state.movieID}
+        selectMovie={ID => this.setMovieID(ID)}
+      />
+    ) : null;
     return (
       <React.Fragment>
-        <Carousel
-          movieList={this.state.movieList}
-          selectMovie={ID => this.setMovieID(ID)}
-        />
-        <MovieDetailContainer
-          movieID={this.state.movieID}
-          selectMovie={ID => this.setMovieID(ID)}
-        />
+        {carousel}
+        {movieDetails}
       </React.Fragment>
     );
   }

@@ -7,7 +7,7 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Transition, Dimmer, Loader } from 'semantic-ui-react';
-import CustomCardSlide from '../../CarouselSlide/CarouselSlide';
+import CarouselSlide from '../../CarouselSlide/CarouselSlide';
 import CustomDotGroup from '../../CustomDotGroup';
 
 import './Carousel.css';
@@ -50,7 +50,8 @@ const Carousel = ({ movieList, selectMovie }) => {
     let first = count % visibleSlides === 1 ? 'first-slide' : '';
     let last = count % visibleSlides === 0 ? 'last-slide' : '';
     return (
-      <CustomCardSlide
+      <CarouselSlide
+        key={count}
         image={
           <img
             {...variableAttribute}
@@ -72,7 +73,8 @@ const Carousel = ({ movieList, selectMovie }) => {
   for (let i = 1; i <= extraSlides; i++) {
     count++;
     slides.push(
-      <CustomCardSlide
+      <CarouselSlide
+        key={count}
         image={<img data-src='' className='ui small' width='150px' alt='' />}
         index={count}
         classToAdd={''}

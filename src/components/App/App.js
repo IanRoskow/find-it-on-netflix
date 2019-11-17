@@ -42,6 +42,13 @@ class App extends React.Component {
   }
 
   render() {
+    let carousel =
+      this.state.searchTerm || this.state.genre ? (
+        <CarouselContainer
+          searchTerm={this.state.searchTerm}
+          genre={this.state.genre}
+        />
+      ) : null;
     return (
       <Container>
         <Header as='h1' color='red' textAlign='center' style={{ margin: 60 }}>
@@ -51,10 +58,7 @@ class App extends React.Component {
           genres={this.state.dropDown}
           onSubmit={(searchTerm, genre) => this.setState({ searchTerm, genre })}
         />
-        <CarouselContainer
-          searchTerm={this.state.searchTerm}
-          genre={this.state.genre}
-        />
+        {carousel}
       </Container>
     );
   }
