@@ -1,60 +1,52 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Netflix from '../../api/Netflix';
 import Carousel from './Carousel/Carousel';
 import MovieDetailContainer from '../MovieDetailsContainer/MovieDetailsContainer';
 
-export default class CarouselContainer extends Component {
-  state = { movieID: '', movieList: [] };
+export default class CarouselContainer extends PureComponent {
+  state = { movieDetails: {} };
 
-  getNetflix = async () => {
-    let genre = this.props.genre;
-    let searchTerm = this.props.searchTerm;
+  closeMovie = () => {
+    let slider = document.querySelector('.carousel');
+    document.querySelector('li[selected]').removeAttribute('selected');
+    slider.classList.add('details-closed');
+    slider.classList.remove('details-open');
+    this.setState({ movieDetails: {} });
+  };
 
-    const currentYear = new Date().getFullYear();
-    let sort = 'Rating';
-    if (!genre.length) {
-      genre = '0';
-      sort = 'Relevance';
-    }
-
+  getMovie = async ID => {
+    this.setState({ movieDetails: {} });
+    let slider = document.querySelector('.carousel');
+    slider.classList.add('details-open');
+    slider.classList.remove('details-closed');
     const response = await Netflix.get('', {
       params: {
-        q: `${searchTerm}-!1900,${currentYear}-!0,5-!0,10-!${genre}-!Any-!Any-!Any-!gt0-!{downloadable}`,
-        t: 'ns',
-        cl: 'all',
-        st: 'adv',
-        ob: sort,
-        p: '1',
-        sa: 'or'
+        t: 'loadvideo',
+        q: ID
       }
     });
-
-    this.setState({ movieList: response.data.ITEMS });
+    this.setState({ movieDetails: response.data.RESULT });
   };
-
-  setMovieID = ID => {
-    this.setState({ movieID: ID });
-  };
-
-  componentDidUpdate() {
-    this.getNetflix();
-  }
 
   render() {
     //Need to create loading carousel component
-    let carousel = this.state.movieList ? (
+    let carousel = this.props.movieList.length ? (
       <Carousel
-        movieList={this.state.movieList}
-        selectMovie={ID => this.setMovieID(ID)}
+        movieList={this.props.movieList}
+        selectMovie={ID => this.getMovie(ID)}
       />
     ) : null; //todo <LoadingCarousel/> instead of null
 
-    let movieDetails = this.state.movieID ? (
-      <MovieDetailContainer
-        movieID={this.state.movieID}
-        selectMovie={ID => this.setMovieID(ID)}
-      />
-    ) : null;
+    console.log(this.state.movieDetails.length);
+    console.log(this.props.movieList.length);
+    let movieDetails =
+      Object.entries(this.state.movieDetails).length &&
+      this.props.movieList.length ? (
+        <MovieDetailContainer
+          movieDetails={this.state.movieDetails}
+          closeMovie={this.closeMovie}
+        />
+      ) : null;
     return (
       <React.Fragment>
         {carousel}

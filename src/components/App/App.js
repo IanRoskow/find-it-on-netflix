@@ -4,31 +4,56 @@ import SearchBar from '../Search/Search';
 import CarouselContainer from '../CarouselContainer/CarouselContainer';
 import { Container, Header, Icon } from 'semantic-ui-react';
 import he from 'he';
+import { getGenres, getNetflix } from '../../utils/utils';
 
 import './App.css';
 
 class App extends React.Component {
   state = {
-    searchTerm: '',
-    genre: ''
+    dropDown: [],
+    movieList: []
   };
 
-  setTerms = (searchTerm, genre) => {};
+  // getNetflix = async props => {
+  //   this.setState({ movieList: [] });
+  //   let genre = props.genre;
+  //   let searchTerm = props.searchTerm;
 
-  getGenres = async () => {
-    const response = await Netflix.get('', {
-      params: {
-        t: 'genres'
-      }
-    });
+  //   const currentYear = new Date().getFullYear();
+  //   let sort = 'Rating';
+  //   if (!genre.length) {
+  //     genre = '0';
+  //     sort = 'Relevance';
+  //   }
 
-    this.setState({ genres: response.data.ITEMS });
+  //   const response = await Netflix.get('', {
+  //     params: {
+  //       q: `${searchTerm}-!1900,${currentYear}-!0,5-!0,10-!${genre}-!Any-!Any-!Any-!gt0-!{downloadable}`,
+  //       t: 'ns',
+  //       cl: 'all',
+  //       st: 'adv',
+  //       ob: sort,
+  //       p: '1',
+  //       sa: 'or'
+  //     }
+  //   });
+
+  //   this.setState({ movieList: response.data.ITEMS });
+  // };
+
+  getMovies = async (searchTerm, genre) => {
+    console.log(searchTerm);
+    console.log(genre);
+    this.setState({ movieList: [] });
+    let data = await getNetflix(searchTerm, genre);
+    console.log(data);
+    this.setState({ movieList: data });
   };
 
   async componentDidMount() {
-    await this.getGenres();
+    let data = await getGenres();
 
-    const genres = this.state.genres.reduce((result, genre) => {
+    const genres = data.reduce((result, genre) => {
       let key = `${Object.keys(genre)}`;
       let text = he.decode(key);
       let value = genre[key].join(';');
@@ -42,13 +67,9 @@ class App extends React.Component {
   }
 
   render() {
-    let carousel =
-      this.state.searchTerm || this.state.genre ? (
-        <CarouselContainer
-          searchTerm={this.state.searchTerm}
-          genre={this.state.genre}
-        />
-      ) : null;
+    let carousel = this.state.movieList.length ? (
+      <CarouselContainer movieList={this.state.movieList} />
+    ) : null;
     return (
       <Container>
         <Header as='h1' color='red' textAlign='center' style={{ margin: 60 }}>
@@ -56,7 +77,9 @@ class App extends React.Component {
         </Header>
         <SearchBar
           genres={this.state.dropDown}
-          onSubmit={(searchTerm, genre) => this.setState({ searchTerm, genre })}
+          onSubmit={(searchTerm, genre) => {
+            this.getMovies(searchTerm, genre);
+          }}
         />
         {carousel}
       </Container>

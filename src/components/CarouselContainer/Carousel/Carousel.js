@@ -12,8 +12,6 @@ import CustomDotGroup from '../../CustomDotGroup';
 
 import './Carousel.css';
 
-let visible = false;
-
 const lazyLoad = () => {
   // if(document.querySelector('.details-open')) this.closeMovie();
   let slider = document.querySelector('.carousel__slider-tray-wrapper');

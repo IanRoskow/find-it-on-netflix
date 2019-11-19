@@ -1,42 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Netflix from '../../api/Netflix';
 import MovieDetails from './MovieDetails/MovieDetails';
 
-export default class MovieDetailsContainer extends Component {
-  state = { movieDetails: '' };
-
-  getMovie = async () => {
-    let slider = document.querySelector('.carousel');
-    slider.classList.add('details-open');
-    slider.classList.remove('details-closed');
-    const response = await Netflix.get('', {
-      params: {
-        t: 'loadvideo',
-        q: this.props.movieID
-      }
-    });
-    this.setState({ movieDetails: response.data.RESULT });
-  };
-
-  componentDidUpdate() {
-    this.getMovie();
-  }
-
-  closeMovie = () => {
-    let slider = document.querySelector('.carousel');
-    document.querySelector('li[selected]').removeAttribute('selected');
-    slider.classList.add('details-closed');
-    slider.classList.remove('details-open');
-    this.props.selectMovie('');
-  };
-
+export default class MovieDetailsContainer extends PureComponent {
   render() {
-    let movieDetails = this.state.movieDetails ? (
+    let movieDetails = this.props.movieDetails ? (
       <MovieDetails
-        closeMovie={this.closeMovie}
-        movieDetails={this.state.movieDetails}
+        closeMovie={this.props.closeMovie}
+        movieDetails={this.props.movieDetails}
       />
     ) : null; //todo <LoaderMovie /> instead of null
-    return <React.Fragment>{movieDetails}</React.Fragment>;
+    return movieDetails;
   }
 }
