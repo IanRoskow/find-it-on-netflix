@@ -11,7 +11,8 @@ import './App.css';
 class App extends React.Component {
   state = {
     dropDown: [],
-    movieList: []
+    movieList: [],
+    isLoading: false
   };
 
   // getNetflix = async props => {
@@ -44,10 +45,11 @@ class App extends React.Component {
   getMovies = async (searchTerm, genre) => {
     console.log(searchTerm);
     console.log(genre);
-    this.setState({ movieList: [] });
+    await this.setState({ movieList: [], isLoading: false });
+    this.setState({ isLoading: true });
     let data = await getNetflix(searchTerm, genre);
     console.log(data);
-    this.setState({ movieList: data });
+    this.setState({ movieList: data, isLoading: false });
   };
 
   async componentDidMount() {
@@ -67,9 +69,13 @@ class App extends React.Component {
   }
 
   render() {
-    let carousel = this.state.movieList.length ? (
-      <CarouselContainer movieList={this.state.movieList} />
-    ) : null;
+    let carousel =
+      this.state.movieList.length || this.state.isLoading ? (
+        <CarouselContainer
+          movieList={this.state.movieList}
+          isLoading={this.state.isLoading}
+        />
+      ) : null;
     return (
       <Container>
         <Header as='h1' color='red' textAlign='center' style={{ margin: 60 }}>

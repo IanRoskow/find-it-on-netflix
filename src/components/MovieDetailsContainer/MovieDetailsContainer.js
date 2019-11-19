@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import Netflix from '../../api/Netflix';
 import MovieDetails from './MovieDetails/MovieDetails';
+import { Transition, Dimmer, Loader } from 'semantic-ui-react';
 
 export default class MovieDetailsContainer extends PureComponent {
   render() {

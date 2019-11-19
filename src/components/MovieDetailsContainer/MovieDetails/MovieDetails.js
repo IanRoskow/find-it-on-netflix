@@ -1,6 +1,15 @@
 import React from 'react';
 import he from 'he';
-import { Header, Divider, Icon, Item, Flag } from 'semantic-ui-react';
+import {
+  Transition,
+  Dimmer,
+  Loader,
+  Header,
+  Divider,
+  Icon,
+  Item,
+  Flag
+} from 'semantic-ui-react';
 
 import './MovieDetails.css';
 
@@ -52,8 +61,7 @@ const MovieDetails = props => {
       <Item></Item>
     </Item.Group>
   );
-  console.log(props);
-  if (props.movieDetails) {
+  if (Object.entries(props.movieDetails).length) {
     let Sidebar = (
       <div>
         <MovieMeta
@@ -141,7 +149,22 @@ const MovieDetails = props => {
     );
   }
 
-  return details;
+  return (
+    <div
+      className='transitionMovie'
+      style={{ position: 'relative', top: '-50px' }}
+    >
+      <Transition visible={props.isLoading} animation='fade' duration={250}>
+        <Dimmer
+          active={props.isLoading}
+          style={{ backgroundColor: 'rgb(20, 20, 20)' }}
+        >
+          <Loader size='big'>Loading</Loader>
+        </Dimmer>
+      </Transition>
+      {details}
+    </div>
+  );
 };
 
 export default MovieDetails;

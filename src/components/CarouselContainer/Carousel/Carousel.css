@@ -117,6 +117,5 @@
 }
 
 .transitionMovie {
-  height: 0;
   transition: height 250ms;
 }

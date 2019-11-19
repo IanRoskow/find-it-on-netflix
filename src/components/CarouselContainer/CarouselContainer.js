@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import Netflix from '../../api/Netflix';
 import Carousel from './Carousel/Carousel';
-import MovieDetailContainer from '../MovieDetailsContainer/MovieDetailsContainer';
+import MovieDetails from '../MovieDetailsContainer/MovieDetails/MovieDetails';
 
 export default class CarouselContainer extends PureComponent {
-  state = { movieDetails: {} };
+  state = { movieDetails: {}, isLoadingMovie: false };
 
   closeMovie = () => {
     let slider = document.querySelector('.carousel');
@@ -15,7 +15,7 @@ export default class CarouselContainer extends PureComponent {
   };
 
   getMovie = async ID => {
-    this.setState({ movieDetails: {} });
+    this.setState({ movieDetails: {}, isLoadingMovie: true });
     let slider = document.querySelector('.carousel');
     slider.classList.add('details-open');
     slider.classList.remove('details-closed');
@@ -25,26 +25,32 @@ export default class CarouselContainer extends PureComponent {
         q: ID
       }
     });
-    this.setState({ movieDetails: response.data.RESULT });
+    this.setState({
+      movieDetails: response.data.RESULT,
+      isLoadingMovie: false
+    });
   };
 
   render() {
     //Need to create loading carousel component
-    let carousel = this.props.movieList.length ? (
-      <Carousel
-        movieList={this.props.movieList}
-        selectMovie={ID => this.getMovie(ID)}
-      />
-    ) : null; //todo <LoadingCarousel/> instead of null
+    let carousel =
+      this.props.movieList.length || this.props.isLoading ? (
+        <Carousel
+          movieList={this.props.movieList}
+          selectMovie={ID => this.getMovie(ID)}
+          isLoadingMovies={this.props.isLoading}
+        />
+      ) : null; //todo <LoadingCarousel/> instead of null
 
     console.log(this.state.movieDetails.length);
     console.log(this.props.movieList.length);
     let movieDetails =
-      Object.entries(this.state.movieDetails).length &&
-      this.props.movieList.length ? (
-        <MovieDetailContainer
+      Object.entries(this.state.movieDetails).length ||
+      this.state.isLoadingMovie ? (
+        <MovieDetails
           movieDetails={this.state.movieDetails}
           closeMovie={this.closeMovie}
+          isLoading={this.state.isLoadingMovie}
         />
       ) : null;
     return (

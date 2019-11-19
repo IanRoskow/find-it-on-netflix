@@ -6,7 +6,7 @@ import {
   ButtonNext
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Transition, Dimmer, Loader } from 'semantic-ui-react';
+import { Placeholder, Dimmer, Loader } from 'semantic-ui-react';
 import CarouselSlide from '../../CarouselSlide/CarouselSlide';
 import CustomDotGroup from '../../CustomDotGroup';
 
@@ -33,7 +33,7 @@ const lazyLoad = () => {
   });
 };
 
-const Carousel = ({ movieList, selectMovie }) => {
+const Carousel = ({ movieList, selectMovie, isLoadingMovies }) => {
   //Set the mount of visible slides, this will change as the viewport changes.
   let visibleSlides = 7;
 
@@ -66,8 +66,30 @@ const Carousel = ({ movieList, selectMovie }) => {
     );
   });
 
+  if (isLoadingMovies) {
+    for (let i = 1; i <= visibleSlides; i++) {
+      count++;
+      slides.push(
+        <CarouselSlide
+          key={count}
+          image={
+            <Placeholder inverted style={{ height: 200, width: 150 }}>
+              <Placeholder.Image />
+            </Placeholder>
+          }
+          index={count}
+          classToAdd={''}
+          callBack={() => {}}
+        />
+      );
+    }
+  }
+
   //Add extra blank slides to ensure it first and last slides in the carousel stay consistent
-  let extraSlides = count ? visibleSlides - (count % visibleSlides) : 0;
+  console.log(count);
+  let needExtra = count % visibleSlides;
+  let extraSlides = needExtra ? visibleSlides - needExtra : 0;
+  console.log(extraSlides);
   for (let i = 1; i <= extraSlides; i++) {
     count++;
     slides.push(
