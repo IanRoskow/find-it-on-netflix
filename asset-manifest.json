@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/find-it-on-netflix/static/css/main.4ef19acc.chunk.css",
+    "main.js": "/find-it-on-netflix/static/js/main.27adbfe2.chunk.js",
+    "main.js.map": "/find-it-on-netflix/static/js/main.27adbfe2.chunk.js.map",
+    "runtime-main.js": "/find-it-on-netflix/static/js/runtime-main.84c05bcc.js",
+    "runtime-main.js.map": "/find-it-on-netflix/static/js/runtime-main.84c05bcc.js.map",
+    "static/css/2.0258af90.chunk.css": "/find-it-on-netflix/static/css/2.0258af90.chunk.css",
+    "static/js/2.df76eb7a.chunk.js": "/find-it-on-netflix/static/js/2.df76eb7a.chunk.js",
+    "static/js/2.df76eb7a.chunk.js.map": "/find-it-on-netflix/static/js/2.df76eb7a.chunk.js.map",
+    "index.html": "/find-it-on-netflix/index.html",
+    "precache-manifest.a9ee803f10fee38c1d3a84221a68ce45.js": "/find-it-on-netflix/precache-manifest.a9ee803f10fee38c1d3a84221a68ce45.js",
+    "service-worker.js": "/find-it-on-netflix/service-worker.js",
+    "static/css/2.0258af90.chunk.css.map": "/find-it-on-netflix/static/css/2.0258af90.chunk.css.map",
+    "static/css/main.4ef19acc.chunk.css.map": "/find-it-on-netflix/static/css/main.4ef19acc.chunk.css.map",
+    "static/media/Arrow.svg": "/find-it-on-netflix/static/media/Arrow.6a87d030.svg",
+    "static/media/semantic.min.css": "/find-it-on-netflix/static/media/outline-icons.ef60a4f6.woff"
+  }
+}
