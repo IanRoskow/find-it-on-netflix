@@ -1,13 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 #api keys
 .env
-/.netlify
 
 # dependencies
 /node_modules
 /semantic
 /.pnp
 .pnp.js
+
+#Netlify
+/.netlify
 
 # testing
 /coverage
