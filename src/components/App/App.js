@@ -1,8 +1,7 @@
 import React from 'react';
-import Netflix from '../../api/Netflix';
 import SearchBar from '../Search/Search';
 import CarouselContainer from '../CarouselContainer/CarouselContainer';
-import { Container, Header, Icon } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import he from 'he';
 import { getGenres, getNetflix } from '../../utils/utils';
 
@@ -14,33 +13,6 @@ class App extends React.Component {
     movieList: [],
     isLoading: false
   };
-
-  // getNetflix = async props => {
-  //   this.setState({ movieList: [] });
-  //   let genre = props.genre;
-  //   let searchTerm = props.searchTerm;
-
-  //   const currentYear = new Date().getFullYear();
-  //   let sort = 'Rating';
-  //   if (!genre.length) {
-  //     genre = '0';
-  //     sort = 'Relevance';
-  //   }
-
-  //   const response = await Netflix.get('', {
-  //     params: {
-  //       q: `${searchTerm}-!1900,${currentYear}-!0,5-!0,10-!${genre}-!Any-!Any-!Any-!gt0-!{downloadable}`,
-  //       t: 'ns',
-  //       cl: 'all',
-  //       st: 'adv',
-  //       ob: sort,
-  //       p: '1',
-  //       sa: 'or'
-  //     }
-  //   });
-
-  //   this.setState({ movieList: response.data.ITEMS });
-  // };
 
   getMovies = async (searchTerm, genre) => {
     console.log(searchTerm);

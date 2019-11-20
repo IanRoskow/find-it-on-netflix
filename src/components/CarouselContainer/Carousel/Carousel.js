@@ -6,7 +6,7 @@ import {
   ButtonNext
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Placeholder, Dimmer, Loader } from 'semantic-ui-react';
+import { Placeholder } from 'semantic-ui-react';
 import CarouselSlide from '../../CarouselSlide/CarouselSlide';
 import CustomDotGroup from '../../CustomDotGroup';
 
@@ -103,15 +103,15 @@ const Carousel = ({ movieList, selectMovie, isLoadingMovies }) => {
     );
   }
 
-  //Create the dot navigation for the carousel
-  let dotCount = Math.round(count / visibleSlides);
-  let dotNavigation = (
-    <CustomDotGroup
-      slides={dotCount}
-      count={visibleSlides}
-      callBack={lazyLoad}
-    />
-  );
+  // //Create the dot navigation for the carousel
+  // let dotCount = Math.round(count / visibleSlides);
+  // let dotNavigation = (
+  //   <CustomDotGroup
+  //     slides={dotCount}
+  //     count={visibleSlides}
+  //     callBack={lazyLoad}
+  //   />
+  // );
 
   //Create the left and right buttons for the carousel
   let buttons =

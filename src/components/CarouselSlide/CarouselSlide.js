@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Slide } from 'pure-react-carousel';
 import React from 'react';
-import { Card } from 'semantic-ui-react';
 
 import './CarouselSlide.css';
 
