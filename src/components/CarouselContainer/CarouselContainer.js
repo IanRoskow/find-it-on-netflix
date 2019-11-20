@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Netflix from '../../api/Netflix';
+import { movieDetails, getMovieDetails } from '../../utils/utils';
 import Carousel from './Carousel/Carousel';
 import MovieDetails from '../MovieDetailsContainer/MovieDetails/MovieDetails';
 
@@ -19,14 +19,9 @@ export default class CarouselContainer extends PureComponent {
     let slider = document.querySelector('.carousel');
     slider.classList.add('details-open');
     slider.classList.remove('details-closed');
-    const response = await Netflix.get('', {
-      params: {
-        t: 'loadvideo',
-        q: ID
-      }
-    });
+    const response = await getMovieDetails(ID);
     this.setState({
-      movieDetails: response.data.RESULT,
+      movieDetails: response,
       isLoadingMovie: false
     });
   };
