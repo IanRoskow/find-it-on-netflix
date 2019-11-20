@@ -8,7 +8,6 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { Placeholder } from 'semantic-ui-react';
 import CarouselSlide from '../../CarouselSlide/CarouselSlide';
-import CustomDotGroup from '../../CustomDotGroup';
 
 import './Carousel.css';
 
