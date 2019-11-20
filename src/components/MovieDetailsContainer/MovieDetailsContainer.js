@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import MovieDetails from './MovieDetails/MovieDetails';
-import { Transition, Dimmer, Loader } from 'semantic-ui-react';
 
 export default class MovieDetailsContainer extends PureComponent {
   render() {
