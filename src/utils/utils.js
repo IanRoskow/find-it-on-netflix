@@ -1,8 +1,6 @@
 import Netflix from '../api/Netflix';
 
 export const getNetflix = async (searchTerm, genre) => {
-  console.log(searchTerm);
-  console.log(genre);
   const currentYear = new Date().getFullYear();
   let sort = 'Rating';
   if (!genre.length) {
@@ -20,8 +18,20 @@ export const getNetflix = async (searchTerm, genre) => {
       p: '1',
       sa: 'or'
     }
+  }).catch(function(error) {
+    if (error.response) {
+      // Request made and server responded
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
   });
-  console.log(response.data.ITEMS);
   return response.data.ITEMS;
 };
 
@@ -29,6 +39,19 @@ export const getGenres = async () => {
   const response = await Netflix.get('', {
     params: {
       t: 'genres'
+    }
+  }).catch(function(error) {
+    if (error.response) {
+      // Request made and server responded
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
     }
   });
 
