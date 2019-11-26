@@ -7,7 +7,6 @@ import { getGenres, getNetflix } from '../../utils/utils';
 import styled from 'styled-components';
 
 import './App.css';
-import { isAbsolute } from 'path';
 
 const Container = styled.div`
   &&&& {
