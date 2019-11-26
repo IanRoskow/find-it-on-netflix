@@ -8,7 +8,8 @@ li[selected] img {
 li[selected] .slide::after {
   content: '';
   position: relative;
-  left: 60px;
+  left: 50%;
+  margin-left: -15px;
   top: 5px;
   width: 0;
   height: 0;
@@ -16,4 +17,12 @@ li[selected] .slide::after {
   border-right: 15px solid transparent;
   border-top: 10px solid white;
   clear: both;
+
+  @media (max-width: 780px){
+  margin-left: -30px;
+  top: 19px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 20px solid white;
+  }
 }

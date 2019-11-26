@@ -10,8 +10,22 @@ import {
   Item,
   Flag
 } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 import './MovieDetails.css';
+
+const StyledItem = styled(Item.Content)`
+&&&&{
+  position: relative;
+  padding: 20px 0px;
+  margin: 0px 20px;
+  transition: opacity 250ms;
+  @media (max-width: 780px){
+    min-height: 350px;
+    margin: 0px;
+  }
+}
+`;
 
 const MovieMeta = props => {
   return (
@@ -93,19 +107,12 @@ const MovieDetails = props => {
             'background-color': 'rgb(20,20,20)'
           }}
         >
-          <Item>
+          <Item className='Item'>
             <Item.Image
               style={{ width: '200px', minHeight: '280px' }}
               src={props.movieDetails.nfinfo.image1}
             />
-            <Item.Content
-              style={{
-                position: 'relative',
-                padding: '20px 0px',
-                margin: '0px 20px',
-                transition: 'opacity 250ms'
-              }}
-            >
+            <StyledItem>
               <Item.Header style={{ color: 'white', fontSize: '1.6em' }}>
                 {he.decode(props.movieDetails.nfinfo.title)}
               </Item.Header>
@@ -141,7 +148,7 @@ const MovieDetails = props => {
                 </Header>
                 <div style={flagStyles}>{flags}</div>
               </div>
-            </Item.Content>
+            </StyledItem>
           </Item>
         </Item.Group>
         <Divider />

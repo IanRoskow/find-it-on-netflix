@@ -32,9 +32,13 @@ const lazyLoad = () => {
   });
 };
 
-const Carousel = ({ movieList, selectMovie, isLoadingMovies }) => {
+const Carousel = ({
+  movieList,
+  selectMovie,
+  isLoadingMovies,
+  visibleSlides
+}) => {
   //Set the mount of visible slides, this will change as the viewport changes.
-  let visibleSlides = 7;
 
   //Map the movie titles to an array of card slides
   let count = 0;
@@ -50,13 +54,7 @@ const Carousel = ({ movieList, selectMovie, isLoadingMovies }) => {
       <CarouselSlide
         key={count}
         image={
-          <img
-            {...variableAttribute}
-            hasMasterSpinner='true'
-            className='ui small'
-            width='150px'
-            alt='Error'
-          />
+          <img {...variableAttribute} className='carouselImage' alt='Error' />
         }
         index={count}
         classToAdd={first + last}

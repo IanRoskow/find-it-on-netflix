@@ -8,24 +8,26 @@
 
 .carousel > button {
   border: none;
+  outline: none;
   background-color: transparent;
   position: absolute;
-  top: 65px;
+  top: 50%;
+  margin-top: -60px;
   opacity: 0.3;
   /* transition: transform 800ms; */
 }
 
 .carousel > button > img {
-  height: 150px;
+  width: 100%;
 }
 
 .carousel .carousel__next-button {
-  right: -50px;
+  right: -35px;
   transition: right 600ms;
 }
 
 .carousel .carousel__back-button {
-  left: -50px;
+  left: -35px;
   transition: left 600ms;
 }
 
@@ -34,12 +36,12 @@
 } */
 
 .carousel .carousel__next-button:hover {
-  right: -55px;
+  right: -40px;
   opacity: 0.8;
 }
 
 .carousel .carousel__back-button:hover {
-  left: -55px;
+  left: -40px;
   opacity: 0.8;
 }
 
@@ -75,47 +77,49 @@
 .slide img {
   pointer-events: none;
   transition: width 500ms;
-}
-
-.details-closed .is-open .slide img {
-  width: 200px;
-}
-.carousel__slide {
-  transition-duration: 500ms;
-}
-/* Middle slides */
-.details-closed .open-now .carousel__slide {
-  transform: translate3d(-25px, 0, 0);
-}
-.details-closed .open-now .carousel__slide.is-open {
-  transform: translate3d(-25px, -35px, 0);
-}
-.details-closed .open-now .is-open ~ .carousel__slide {
-  transform: translate3d(25px, 0, 0);
-}
-/* First slide */
-.details-closed .open-now .carousel__slide.is-open.first-slide {
-  transform: translate3d(0, -35px, 0);
-}
-.details-closed .open-now .is-open.first-slide ~ .carousel__slide {
-  transform: translate3d(50px, 0, 0);
-}
-
-/* Last slide */
-.details-closed .open-now.last__slide .carousel__slide {
-  transform: translate3d(-50px, 0, 0);
-}
-.details-closed .open-now .carousel__slide.is-open.last-slide {
-  transform: translate3d(-50px, -35px, 0);
-}
-.details-closed .open-now.last__slide .is-open.last-slide ~ .carousel__slide {
-  transform: translate3d(0px, 0, 0);
-}
-
-.details-open .open-now .carousel_slide {
-  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+    display: inherit;
 }
 
 .transitionMovie {
   transition: height 250ms;
+}
+
+@media (min-width: 780px){
+  .details-closed .is-open .slide img {
+    width: 150%;
+  }
+  .carousel__slide {
+    transition-duration: 500ms;
+  }
+  /* Middle slides */
+  .details-closed .open-now .carousel__slide {
+    transform: translate3d(-25%, 0, 0);
+  }
+  .details-closed .open-now .carousel__slide.is-open {
+    transform: translate3d(-25%, -15%, 0);
+  }
+  .details-closed .open-now .is-open ~ .carousel__slide {
+    transform: translate3d(25%, 0, 0);
+  }
+  /* First slide */
+  .details-closed .open-now .carousel__slide.is-open.first-slide {
+    transform: translate3d(0, -15%, 0);
+  }
+  .details-closed .open-now .is-open.first-slide ~ .carousel__slide {
+    transform: translate3d(50%, 0, 0);
+  }
+  
+  /* Last slide */
+  .details-closed .open-now.last__slide .carousel__slide {
+    transform: translate3d(-50%, 0, 0);
+  }
+  .details-closed .open-now .carousel__slide.is-open.last-slide {
+    transform: translate3d(-50%, -15%, 0);
+  }
+  .details-closed .open-now.last__slide .is-open.last-slide ~ .carousel__slide {
+    transform: translate3d(0%, 0, 0);
+  }
 }

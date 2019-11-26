@@ -2,11 +2,24 @@ import React, { PureComponent } from 'react';
 import { movieDetails, getMovieDetails } from '../../utils/utils';
 import Carousel from './Carousel/Carousel';
 import MovieDetails from '../MovieDetailsContainer/MovieDetails/MovieDetails';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`
+  @media (max-width: 780px){
+    width: 80%;
+    margin: auto;
+  }
+`
 
 export default class CarouselContainer extends PureComponent {
   state = { movieDetails: {}, isLoadingMovie: false };
 
   closeMovie = () => {
+    window.scroll({
+      top: (window.innerWidth > 780)?0: 316,
+      left: 0,
+      behavior: 'smooth'
+    });
     let slider = document.querySelector('.carousel');
     document.querySelector('li[selected]').removeAttribute('selected');
     slider.classList.add('details-closed');
@@ -16,6 +29,11 @@ export default class CarouselContainer extends PureComponent {
 
   getMovie = async ID => {
     this.setState({ movieDetails: {}, isLoadingMovie: true });
+    window.scroll({
+      top: (window.innerWidth > 780)?215: 731,
+      left: 0,
+      behavior: 'smooth'
+    });
     let slider = document.querySelector('.carousel');
     slider.classList.add('details-open');
     slider.classList.remove('details-closed');
@@ -34,6 +52,7 @@ export default class CarouselContainer extends PureComponent {
           movieList={this.props.movieList}
           selectMovie={ID => this.getMovie(ID)}
           isLoadingMovies={this.props.isLoading}
+          visibleSlides={this.props.slideCount}
         />
       ) : null; //todo <LoadingCarousel/> instead of null
 
@@ -50,7 +69,9 @@ export default class CarouselContainer extends PureComponent {
       ) : null;
     return (
       <React.Fragment>
+        <StyledContainer>
         {carousel}
+        </StyledContainer>
         {movieDetails}
       </React.Fragment>
     );
