@@ -6,18 +6,19 @@ import he from 'he';
 import { getGenres, getNetflix } from '../../utils/utils';
 import styled from 'styled-components';
 
-
 import './App.css';
 import { isAbsolute } from 'path';
 
 const Container = styled.div`
-  width: 90%;
-  margin: auto;
-  max-width: 1440px;
-  @media(max-width: 780px){
-    width: 100%;
-    padding:0px 20px;
-  };
+  &&&& {
+    width: 90%;
+    margin: auto;
+    max-width: 1440px;
+    @media (max-width: 780px) {
+      width: 100%;
+      padding: 0px 20px;
+    }
+  }
 `;
 
 class App extends React.Component {
@@ -87,7 +88,17 @@ class App extends React.Component {
       ) : null;
     return (
       <Container>
-        <Header as='h1' color='red' textAlign='center' style={{ position: 'absolute', top: '0', left: '0', padding: '20px 20px'  }}>
+        <Header
+          as='h1'
+          color='red'
+          textAlign='center'
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            padding: '20px 20px'
+          }}
+        >
           Netflix Search
         </Header>
         <SearchBar

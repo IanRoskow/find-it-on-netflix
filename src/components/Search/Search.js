@@ -2,7 +2,15 @@ import React, { PureComponent } from 'react';
 import { Form, Dropdown, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const Grid = styled.div `
+const StyledForm = styled(Form)`
+  &&&& {
+    @media (max-width: 780px) {
+      font-size: 16px;
+    }
+  }
+`;
+
+const Grid = styled.div`
   display: grid;
   grid-template-columns: 5fr 5fr 2fr;
   grid-template-rows: 38px;
@@ -10,7 +18,7 @@ const Grid = styled.div `
   max-width: 800px;
   margin: 130px auto 20px;
 
-  @media (max-width: 780px){
+  @media (max-width: 780px) {
     grid-template-rows: 38px 38px 38px;
     grid-template-columns: 1fr;
   }
@@ -27,7 +35,7 @@ class SearchBar extends PureComponent {
   render() {
     //TODO for each in the drop down state we will create a custom row of movies with a header.
     return (
-      <Form onSubmit={this.onFormSubmit}>
+      <StyledForm onSubmit={this.onFormSubmit}>
         <Grid>
           <Form.Input
             inverted
@@ -49,9 +57,11 @@ class SearchBar extends PureComponent {
               this.setState({ term: '', genre: d.value });
             }}
           />
-          <Button style={{margin: '0'}} type='submit'>Search</Button>
+          <Button style={{ margin: '0' }} type='submit'>
+            Search
+          </Button>
         </Grid>
-      </Form>
+      </StyledForm>
     );
   }
 }
