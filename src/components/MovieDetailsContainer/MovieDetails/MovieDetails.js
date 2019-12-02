@@ -12,19 +12,17 @@ import {
 } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-import './MovieDetails.css';
-
 const StyledItem = styled(Item.Content)`
-&&&&{
-  position: relative;
-  padding: 20px 0px;
-  margin: 0px 20px;
-  transition: opacity 250ms;
-  @media (max-width: 780px){
-    min-height: 350px;
-    margin: 0px;
+  &&&& {
+    position: relative;
+    padding: 20px 0px;
+    margin: 0px 20px;
+    transition: opacity 250ms;
+    @media (max-width: 780px) {
+      min-height: 350px;
+      margin: 0px;
+    }
   }
-}
 `;
 
 const MovieMeta = props => {
@@ -43,25 +41,54 @@ const MovieMeta = props => {
   );
 };
 
-const flagContainer = {
-  position: 'absolute',
-  width: '100%',
-  bottom: '0px',
-  color: 'white',
-  boxSizing: 'content-box'
-};
+const FlagContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  color: white;
+  box-sizing: content-box;
+`;
 
-const flagStyles = {
-  alignItems: 'end',
-  display: 'grid',
-  gridTemplateColumns: 'repeat(7, 140px)',
-  gridTemplateRows: 'repeat(2, 25px)',
-  gridAutoColumns: '140px',
-  gridAutoFlow: 'column',
-  overflowX: 'scroll',
-  overflowY: 'hidden',
-  height: '70px'
-};
+const Flags = styled.div`
+  align-items: end;
+  display: grid;
+  grid-template-columns: repeat(7, 140px);
+  grid-template-rows: repeat(2, 25px);
+  grid-auto-columns: 140px;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  overflow-x: hidden;
+  height: 70px;
+
+  & > .flag::after {
+    content: attr(title);
+    padding-left: 5px;
+    color: white;
+    line-height: 20px;
+  }
+  & > .flag:not(.icon) {
+    width: auto;
+  }
+`;
+
+const StyledItemContainer = styled(Item)`
+  @media (max-width: 780px) {
+    & > .image {
+      display: none !important;
+    }
+  }
+`;
+
+const StyledTransition = styled.div`
+  position: relative;
+  top: -50px;
+
+  @media (max-width: 780px) {
+    .transitionMovie {
+      top: -110px !important;
+    }
+  }
+`;
 
 const MovieDetails = props => {
   let details = (
@@ -107,7 +134,7 @@ const MovieDetails = props => {
             'background-color': 'rgb(20,20,20)'
           }}
         >
-          <Item className='Item'>
+          <StyledItemContainer>
             <Item.Image
               style={{ width: '200px', minHeight: '280px' }}
               src={props.movieDetails.nfinfo.image1}
@@ -137,7 +164,7 @@ const MovieDetails = props => {
               >
                 {he.decode(props.movieDetails.nfinfo.synopsis)}
               </Item.Description>
-              <div style={flagContainer}>
+              <FlagContainer>
                 <Header
                   style={{ marginBottom: '0px' }}
                   as='h5'
@@ -146,10 +173,10 @@ const MovieDetails = props => {
                 >
                   Streaming in:
                 </Header>
-                <div style={flagStyles}>{flags}</div>
-              </div>
+                <Flags>{flags}</Flags>
+              </FlagContainer>
             </StyledItem>
-          </Item>
+          </StyledItemContainer>
         </Item.Group>
         <Divider />
       </React.Fragment>
@@ -157,10 +184,7 @@ const MovieDetails = props => {
   }
 
   return (
-    <div
-      className='transitionMovie'
-      style={{ position: 'relative', top: '-50px' }}
-    >
+    <StyledTransition>
       <Transition visible={props.isLoading} animation='fade' duration={250}>
         <Dimmer
           active={props.isLoading}
@@ -170,7 +194,7 @@ const MovieDetails = props => {
         </Dimmer>
       </Transition>
       {details}
-    </div>
+    </StyledTransition>
   );
 };
 
