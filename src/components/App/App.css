@@ -1,15 +1,13 @@
 body {
-  background-color: #141414;
+  background-color: #242423;
 }
 #root {
   overflow: hidden;
   min-height: 950px;
 }
 
-@media (max-width: 780px){
+@media (max-width: 780px) {
   #root {
     min-height: 1156px;
   }
 }
-
-

@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from '../Search/Search';
 import CarouselContainer from '../CarouselContainer/CarouselContainer';
-import { Header } from 'semantic-ui-react';
+import { Header as SemanticHeader } from 'semantic-ui-react';
 import he from 'he';
 import { getGenres, getNetflix } from '../../utils/utils';
 import styled from 'styled-components';
@@ -20,6 +20,14 @@ const Container = styled.div`
   }
 `;
 
+const StyledHeader = styled(SemanticHeader)`
+  color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 20px;
+`;
+
 class App extends React.Component {
   state = {
     dropDown: [],
@@ -29,17 +37,13 @@ class App extends React.Component {
   };
 
   getMovies = async (searchTerm, genre) => {
-    console.log(searchTerm);
-    console.log(genre);
     await this.setState({ movieList: [], isLoading: false });
     this.setState({ isLoading: true });
     let data = await getNetflix(searchTerm, genre);
-    console.log(data);
     this.setState({ movieList: data, isLoading: false });
   };
 
   countSlides = () => {
-    console.log('counting slides');
     let slideCount = 0;
     if (window.innerWidth >= 1200) {
       slideCount = 7;
@@ -50,9 +54,6 @@ class App extends React.Component {
     } else {
       slideCount = 1;
     }
-    console.log(window.innerWidth);
-    console.log(slideCount);
-    console.log(this.state.slideCount);
     if (slideCount !== this.state.slideCount) {
       this.setState({ slideCount });
     }
@@ -87,19 +88,7 @@ class App extends React.Component {
       ) : null;
     return (
       <Container>
-        <Header
-          as='h1'
-          color='red'
-          textAlign='center'
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            padding: '20px 20px'
-          }}
-        >
-          Netflix Search
-        </Header>
+        <StyledHeader as='h1'>Netflix Search</StyledHeader>
         <SearchBar
           genres={this.state.dropDown}
           onSubmit={(searchTerm, genre) => {

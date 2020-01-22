@@ -130,8 +130,7 @@ const MovieDetails = props => {
       <React.Fragment>
         <Item.Group
           style={{
-            position: 'relative',
-            'background-color': 'rgb(20,20,20)'
+            position: 'relative'
           }}
         >
           <StyledItemContainer>
