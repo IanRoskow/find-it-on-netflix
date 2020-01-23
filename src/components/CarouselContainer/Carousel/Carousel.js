@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CarouselProvider,
   Slider,
@@ -11,34 +11,28 @@ import CarouselSlide from '../../CarouselSlide/CarouselSlide';
 
 import './Carousel.css';
 
-const lazyLoad = () => {
-  // if(document.querySelector('.details-open')) this.closeMovie();
-  let slider = document.querySelector('.carousel__slider-tray-wrapper');
-  let components = document.querySelectorAll(
-    '.carousel__slider-tray-wrapper li'
-  );
-  let width = slider.clientWidth;
-  let style = window.getComputedStyle(slider.querySelector('ul'));
-  // eslint-disable-next-line no-undef
-  let matrix = new WebKitCSSMatrix(style.webkitTransform);
-  let locationH = matrix.m41 * -1;
-  components.forEach(el => {
-    if (el.offsetLeft < locationH + width * 4) {
-      let image = el.querySelector('img');
-      if (!image.src) {
-        image.src = image.getAttribute('data-src');
-      }
-    }
-  });
-};
-
 const Carousel = ({
   movieList,
   selectMovie,
   isLoadingMovies,
   visibleSlides
 }) => {
-  //Set the mount of visible slides, this will change as the viewport changes.
+  const [buttonVisible, setButtonVisible] = useState(true);
+
+  //Loads all of the images when the user clicks next arrow
+  //This delays all images from being loaded at once and causing issues
+  const lazyLoad = () => {
+    let components = document.querySelectorAll(
+      '.carousel__slider-tray-wrapper li'
+    );
+    setButtonVisible(false);
+    components.forEach(el => {
+      let image = el.querySelector('img');
+      if (!image.src) {
+        image.src = image.getAttribute('data-src');
+      }
+    });
+  };
 
   //Map the movie titles to an array of card slides
   let count = 0;
@@ -63,6 +57,7 @@ const Carousel = ({
     );
   });
 
+  //If it is loading then this creates a loading slider
   if (isLoadingMovies) {
     for (let i = 1; i <= visibleSlides; i++) {
       count++;
@@ -83,10 +78,8 @@ const Carousel = ({
   }
 
   //Add extra blank slides to ensure it first and last slides in the carousel stay consistent
-  console.log(count);
   let needExtra = count % visibleSlides;
   let extraSlides = needExtra ? visibleSlides - needExtra : 0;
-  console.log(extraSlides);
   for (let i = 1; i <= extraSlides; i++) {
     count++;
     slides.push(
@@ -100,21 +93,12 @@ const Carousel = ({
     );
   }
 
-  // //Create the dot navigation for the carousel
-  // let dotCount = Math.round(count / visibleSlides);
-  // let dotNavigation = (
-  //   <CustomDotGroup
-  //     slides={dotCount}
-  //     count={visibleSlides}
-  //     callBack={lazyLoad}
-  //   />
-  // );
-
   //Create the left and right buttons for the carousel
   let buttons =
     count === 0 ? null : (
       <React.Fragment>
         <ButtonBack
+          disabled={buttonVisible}
           children={
             <img src={require('../../../assets/images/Arrow.svg')} alt='<' />
           }
@@ -128,17 +112,6 @@ const Carousel = ({
       </React.Fragment>
     );
 
-  //Conditional render of the movie details depending on if the title was selected.
-  // let movieDetails = null;
-  // if (this.state.movie === 'loading') {
-  //   movieDetails = <MovieDetails movie='Loading' />;
-  // } else if (this.state.movie) {
-  //   movieDetails = (
-  //     <MovieDetails movie={this.state.movie} callBack={this.closeMovie} />
-  //   );
-  // }
-  // let isActive = this.state.loading ? 'active' : '';
-  //Return the results carousel with the movie titles
   return (
     <React.Fragment>
       <CarouselProvider
@@ -148,31 +121,12 @@ const Carousel = ({
         visibleSlides={visibleSlides}
         step={visibleSlides}
         style={{ width: '100%' }}
+        dragEnabled='true'
         className='details-closed'
         infinite='true'
       >
         {buttons}
         <Slider>{slides}</Slider>
-        {/* The buttons need to be disabled until I can think of a fix for the lazy load */}
-        {/* {dotNavigation} */}
-        {/* <div
-          className='transitionMovie'
-          style={{ position: 'relative', top: '-50px' }}
-        >
-          <Transition
-            visible={this.state.loading}
-            animation='fade'
-            duration={250}
-          >
-            <Dimmer
-              active={isActive}
-              style={{ backgroundColor: 'rgb(20, 20, 20)' }}
-            >
-              <Loader size='big'>Loading</Loader>
-            </Dimmer>
-          </Transition>
-          {movieDetails}
-        </div> */}
       </CarouselProvider>
     </React.Fragment>
   );
