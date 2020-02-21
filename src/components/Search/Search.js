@@ -61,7 +61,6 @@ class SearchBar extends PureComponent {
           />
           <Dropdown
             placeholder='Search by genre.'
-            inverted
             fluid
             selection
             button

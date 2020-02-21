@@ -50,8 +50,8 @@ export default class CarouselContainer extends PureComponent {
       this.props.movieList.length || this.props.isLoading ? (
         <Carousel
           movieList={this.props.movieList}
-          selectMovie={ID => this.getMovie(ID)}
           isLoadingMovies={this.props.isLoading}
+          selectMovie={ID => this.getMovie(ID)}
           visibleSlides={this.props.slideCount}
         />
       ) : null; //todo <LoadingCarousel/> instead of null
